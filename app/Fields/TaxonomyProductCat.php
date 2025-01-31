@@ -57,6 +57,50 @@ class TaxonomyProductCat extends Field
                     'label' => 'Knop (url)',
                 ])
 
+            ->endRepeater()
+
+            ->addRepeater('product_dimensions', [
+                'label' => 'Product Dimensions',
+                'layout' => 'row',
+            ])
+
+                ->addText('product_dimensions_title', [
+                    'label' => 'Titel',
+                ])
+                ->addGroup('product_internal_dimensions', [
+                    'label' => 'Maatvoering inwendig',
+                    'layout' => 'block',
+                ])
+                    ->addNumber('length', [
+                        'label' => 'Lengte',
+                        'append' => 'cm',
+                    ])
+                    ->addNumber('width', [
+                        'label' => 'Breedte',
+                        'append' => 'cm',
+                    ])
+                    ->addNumber('height', [
+                        'label' => 'Hoogte',
+                        'append' => 'cm',
+                    ])
+                ->endGroup()
+                ->addGroup('product_external_dimensions', [
+                    'label' => 'Maatvoering uitwendig',
+                    'layout' => 'block',
+                ])
+                    ->addNumber('length', [
+                        'label' => 'Lengte',
+                        'append' => 'cm',
+                    ])
+                    ->addNumber('width', [
+                        'label' => 'Breedte',
+                        'append' => 'cm',
+                    ])
+                    ->addNumber('height', [
+                        'label' => 'Hoogte',
+                        'append' => 'cm',
+                    ])
+                ->endGroup()
             ->endRepeater();
 
         $builder

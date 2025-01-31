@@ -34,6 +34,14 @@
     display: flex;
   }
 
+  &__table {
+    margin-bottom: 2rem;
+  }
+
+  &__title {
+    font-weight: 700;
+  }
+
   table {
     &:first-child {
       margin-right: 3.5rem;

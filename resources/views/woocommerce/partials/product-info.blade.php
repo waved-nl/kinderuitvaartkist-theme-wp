@@ -1,3 +1,10 @@
+@php
+  $product_id = $product->get_id();
+  $product_categories = get_the_terms($product_id, 'product_cat');
+  $category_id = $product_categories[1]->term_id;
+  $product_dimensions = $category_id ? get_field('product_dimensions', 'product_cat_' . $category_id) : null;
+@endphp
+
 <div class="c-product-info">
 
   <h1 class="c-product-title">{!! $page_title !!}</h1>
@@ -119,68 +126,75 @@
           <div id="collapse-2" class="accordion-collapse collapse" aria-labelledby="product-accordion-heading-2" data-bs-parent="#product-accordions">
             <div class="accordion-body">
             <div class="c-product-sizes">
-              <div class="c-product-sizes__inner">
-                @if ($product_internal_dimensions->length || $product_internal_dimensions->width || $product_internal_dimensions->height)
-                  <table>
-                    <thead>
-                      <tr>
-                        <th>Inwendig</th>
-                        <th></th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      @if ($product_internal_dimensions->length)
+                @foreach ($product_dimensions as $dimension)
+                <div class="c-product-sizes__table">
+                <div class="c-product-sizes__title">{{ $dimension['product_dimensions_title'] }}</div>
+                <div class="c-product-sizes__inner">
+                  @if (!empty($dimension['product_internal_dimensions']['length']) || !empty($dimension['product_internal_dimensions']['width']) || !empty($dimension['product_internal_dimensions']['height']))
+                    <table>
+                      <thead>
                         <tr>
-                          <td>Lengte:</td>
-                          <td>{{ $product_internal_dimensions->length }} cm</td>
+                          <th>Inwendig</th>
+                          <th></th>
                         </tr>
-                      @endif
-                      @if($product_internal_dimensions->width)
+                      </thead>
+                      <tbody>
+                        @if (!empty($dimension['product_internal_dimensions']['length']))
+                          <tr>
+                            <td>Lengte:</td>
+                            <td>{{ $dimension['product_internal_dimensions']['length'] }} cm</td>
+                          </tr>
+                        @endif
+                        @if (!empty($dimension['product_internal_dimensions']['width']))
+                          <tr>
+                            <td>Breedte:</td>
+                            <td>{{ $dimension['product_internal_dimensions']['width'] }} cm</td>
+                          </tr>
+                        @endif
+                        @if (!empty($dimension['product_internal_dimensions']['height']))
+                          <tr>
+                            <td>Hoogte:</td>
+                            <td>{{ $dimension['product_internal_dimensions']['height'] }} cm</td>
+                          </tr>
+                        @endif
+                      </tbody>
+                    </table>
+                  @endif
+          
+                  @if (!empty($dimension['product_external_dimensions']['length']) || !empty($dimension['product_external_dimensions']['width']) || !empty($dimension['product_external_dimensions']['height']))
+                    <table>
+                      <thead>
                         <tr>
-                          <td>Breedte:</td>
-                          <td>{{ $product_internal_dimensions->width }} cm</td>
+                          <th>Uitwendig</th>
+                          <th></th>
                         </tr>
-                      @endif
-                      @if($product_internal_dimensions->height)
-                        <tr>
-                          <td>Hoogte:</td>
-                          <td>{{ $product_internal_dimensions->height }} cm</td>
-                        </tr>
-                      @endif
-                    </tbody>
-                  </table>
-                @endif
-                @if ($product_external_dimensions->length || $product_external_dimensions->width || $product_external_dimensions->height)
-                  <table>
-                    <thead>
-                      <tr>
-                        <th>Uitwendig</th>
-                        <th></th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      @if ($product_external_dimensions->length)
-                        <tr>
-                          <td>Lengte:</td>
-                          <td>{{ $product_external_dimensions->length }} cm</td>
-                        </tr>
-                      @endif
-                      @if($product_external_dimensions->width)
-                        <tr>
-                          <td>Breedte:</td>
-                          <td>{{ $product_external_dimensions->width }} cm</td>
-                        </tr>
-                      @endif
-                      @if($product_external_dimensions->height)
-                        <tr>
-                          <td>Hoogte:</td>
-                          <td>{{ $product_external_dimensions->height }} cm</td>
-                        </tr>
-                      @endif
-                    </tbody>
-                  </table>
-                @endif
+                      </thead>
+                      <tbody>
+                        @if (!empty($dimension['product_external_dimensions']['length']))
+                          <tr>
+                            <td>Lengte:</td>
+                            <td>{{ $dimension['product_external_dimensions']['length'] }} cm</td>
+                          </tr>
+                        @endif
+                        @if (!empty($dimension['product_external_dimensions']['width']))
+                          <tr>
+                            <td>Breedte:</td>
+                            <td>{{ $dimension['product_external_dimensions']['width'] }} cm</td>
+                          </tr>
+                        @endif
+                        @if (!empty($dimension['product_external_dimensions']['height']))
+                          <tr>
+                            <td>Hoogte:</td>
+                            <td>{{ $dimension['product_external_dimensions']['height'] }} cm</td>
+                          </tr>
+                        @endif
+                      </tbody>
+                    </table>
+                  @endif
+                </div>
               </div>
+              @endforeach
+              
               @if (isset($shop_settings->accordion_dimensions_link) && !empty($shop_settings->accordion_dimensions_link))
                 @php
                   $link = (object) $shop_settings->accordion_dimensions_link;
