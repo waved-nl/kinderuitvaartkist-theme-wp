@@ -23,7 +23,7 @@
           @endif
         </div>
       </div>
-      
+
       @foreach ($fields->product_variants as $product_id)
         @if ($product_id == $product->get_id())
           @continue
@@ -50,7 +50,64 @@
       {!! $fields->product_description !!}
     </div>
   @endif
-  
+
+  @if(isset($fields->icons) && !empty($fields->icons))
+    <ul class="c-product-info__icons">
+      @foreach($fields->icons as $post_id)
+        @php
+          if(!get_post($post_id)){
+            continue;
+          }
+          $icon = get_field('icon', $post_id);
+          $title = get_the_title($post_id);
+        @endphp
+        <li>
+          <img src="{!! $icon !!}" alt="">
+        </li>
+      @endforeach
+    </ul>
+
+    <button type="button" class="c-product-info__icons-link" data-bs-toggle="modal" data-bs-target="#icons-modal">
+      <span>Legenda iconen</span>
+    </button>
+
+    <div class="modal fade c-icons-modal" id="icons-modal" tabindex="-1" aria-labelledby="icons-modal-title" aria-hidden="true">
+      <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+          <button type="button" class="c-icons-modal__close" data-bs-dismiss="modal" aria-label="Sluiten">
+            @svg('close')
+          </button>
+          <div class="c-icons-modal__inner">
+            <h5 id="icons-modal-title" class="c-icons-modal__title h2">Legenda - Iconen</h5>
+            <div class="c-usps">
+              <div class="row">
+                @foreach($fields->icons as $post_id)
+                  @php
+                    if(!get_post($post_id)){
+                      continue;
+                    }
+                    $icon = get_field('icon', $post_id);
+                    $title = get_the_title($post_id);
+                    $content = get_field('summary', $post_id);
+                  @endphp
+                  <div class="col-lg-6 col-xl-4">
+                    <div class="c-usp c-usp--alt">
+                      <img class="c-usp__icon" src="{!! $icon !!}" alt="{!! $title !!}">
+                      <div class="c-usp__content">
+                        <h5 class="c-usp__title">{!! $title !!}</h5>
+                        <p class="c-usp__text">{!! $content !!}</p>
+                      </div>
+                    </div>
+                  </div>
+                @endforeach
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  @endif
 
   @if (isset($shop_settings->product_contact_form_shortcode) && !empty($shop_settings->product_contact_form_shortcode))
 

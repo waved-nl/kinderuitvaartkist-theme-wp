@@ -11,11 +11,20 @@
   display: flex;
   align-items: flex-start;
 
+  &--alt {
+    flex-direction: column;
+  }
+
   &__icon {
     flex: 0 0 1.875rem;
     width: 1.875rem;
     height: auto;
     margin-right: 1.875rem;
+
+    .c-usp--alt & {
+      margin-right: 0;
+      margin-bottom: 1.25rem;
+    }
 
     @include media-breakpoint-up(md) {
       flex: 0 0 2.5rem;
@@ -30,6 +39,12 @@
 
   &__content {
     flex: 1 1 auto;
+
+    .c-usp--alt & {
+      padding: 15px;
+      border-bottom-right-radius: 20px;
+      background-color: rgba($gold, 0.15);
+    }
   }
 
   &__title {

@@ -22,6 +22,14 @@ class General extends Partial
                 'toolbar' => 'simple_no_format',
             ])
 
+            ->addPostObject('icons', [
+                'label' => 'Iconen',
+                'post_type' => ['icon'],
+                'multiple' => 1,
+                'return_format' => 'id',
+                'ui' => 1,
+            ])
+
             ->addTextarea('product_description_lining', [
                 'label' => 'Binnenbekleding',
                 'rows' => 2,

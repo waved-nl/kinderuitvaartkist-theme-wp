@@ -27,6 +27,33 @@
     width: 100%;
     margin-top: 1.875rem;
   }
+
+  &__icons-link {
+    display: flex;
+    align-items: center;
+    margin-top: 12px;
+    padding: 0;
+    border: none;
+    background-color: transparent;
+    font-size: 12px;
+    text-decoration: underline;
+    cursor: pointer;
+  }
+
+  &__icons {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+    padding-left: 0;
+    list-style-type: none;
+    gap: 20px;
+
+    img {
+      width: 25px;
+      height: 25px;
+      object-fit: contain;
+    }
+  }
 }
 
 .c-product-sizes {
