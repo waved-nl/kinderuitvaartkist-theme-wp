@@ -13,7 +13,7 @@
           <div class="c-filters__collapse" data-filters-collapse>
 
             <div class="c-filters__collapse__inner">
-            
+
               <button class="c-filters__close btn btn-black" data-filters-close>
                 Sluiten
               </button>
@@ -73,9 +73,16 @@
             @include('woocommerce.partials.archive-banners', [
               'loop_index' => $loop_index,
             ])
+
           @endwhile
 
         </div>
+
+        @if($extra_content)
+          <div class="mt-5">
+            {!! $extra_content !!}
+          </div>
+        @endif
 
       </div>
     </div>

@@ -15,11 +15,6 @@ if (function_exists('acf_add_options_page')) {
 }
 
 /**
- * disable ACF menu in admin bar
- */
-add_filter('acf/settings/show_admin', '__return_false');
-
-/**
  * disable ACFE Enhanced UI, Forms and Block types
  */
 add_action('acf/init', function () {

@@ -57,7 +57,11 @@ class TaxonomyProductCat extends Field
                     'label' => 'Knop (url)',
                 ])
 
-            ->endRepeater();
+            ->endRepeater()
+
+            ->addWysiwyg('extra_content', [
+                'label' => 'Extra inhoud',
+            ]);
 
         $builder
             ->setLocation('taxonomy', '==', 'product_cat');

@@ -42,4 +42,10 @@
 
   </div>
 
+  @if($extra_content)
+    <div class="mt-5">
+      {!! $extra_content !!}
+    </div>
+  @endif
+
 @endif

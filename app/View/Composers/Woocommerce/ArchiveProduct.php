@@ -11,12 +11,17 @@ class ArchiveProduct extends Composer
     {
         return [
             'banners' => $this->banners(),
+            'extra_content' => $this->extra_content(),
             'page_header' => (object) $this->page_header(),
         ];
     }
 
     public function banners() {
         return get_field('banners', get_queried_object()->taxonomy.'_'.get_queried_object()->term_id) ?: [];
+    }
+
+    public function extra_content() {
+        return get_field('extra_content', get_queried_object()->taxonomy.'_'.get_queried_object()->term_id) ?: null;
     }
 
     public function page_header() {
