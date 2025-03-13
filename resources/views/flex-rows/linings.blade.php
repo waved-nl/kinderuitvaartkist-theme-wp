@@ -5,7 +5,10 @@
 <section class="o-section o-section--image-cards">
   <div class="container-fluid-xl">
 
-    @include('macros.text-block', ['content' => $content, 'heading_type' => 'h1', 'class' => 'u-text-large'])
+    @include('macros.text-block', [
+      'content' => $content,
+      'class' => 'u-text-large'
+    ])
 
     <div class="c-image-cards">
       @if (!empty($content->group))
@@ -24,7 +27,10 @@
                     <div class="col-sm-6 col-md-4">
                       <div class="c-image-card">
                         <div class="c-image-card__image">
-                          @include('macros.image', ['image' => $item->image, 'class' => ''])
+                          @include('macros.image', [
+                            'image' => $item->image,
+                            'class' => ''
+                          ])
                         </div>
                         <h3>{{ $item->subtitle }}</h3>
                         <p>{{ $item->subtext }}</p>

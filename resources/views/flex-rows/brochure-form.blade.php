@@ -6,14 +6,19 @@
   <div class="container-fluid-xl">
     <div class="row">
       <div class="col-md-6">
-        @include('macros.text-block', ['content' => $content, 'heading_type' => 'h1'])
+        @include('macros.text-block', [
+          'content' => $content,
+        ])
         <div class="c-form">
           {!! do_shortcode($content->form_shortcode) !!}
         </div>
       </div>
       <div class="col-md-6">
         @if (!empty($content->image))
-          @include('macros.image', ['image' => $content->image, 'class' => 'o-image'])
+          @include('macros.image', [
+            'image' => $content->image,
+            'class' => 'o-image'
+          ])
         @endif
       </div>
     </div>

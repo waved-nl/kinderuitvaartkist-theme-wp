@@ -3,6 +3,7 @@
 namespace App\Fields\FlexRows;
 
 use App\Fields\Macros\BgColors;
+use App\Fields\Macros\HeadingSettings;
 use Log1x\AcfComposer\Partial;
 use StoutLogic\AcfBuilder\FieldsBuilder;
 
@@ -32,6 +33,8 @@ class ContentImage extends Partial
                 'label' => 'Instellingen',
                 'placement' => 'top'
             ])
+                ->addFields($this->get(HeadingSettings::class))
+
                 ->addFields($this->get(BgColors::class))
 
                 ->addSelect('image_position', [

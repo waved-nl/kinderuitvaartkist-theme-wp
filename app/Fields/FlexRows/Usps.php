@@ -4,6 +4,7 @@ namespace App\Fields\FlexRows;
 
 use Log1x\AcfComposer\Partial;
 use StoutLogic\AcfBuilder\FieldsBuilder;
+use App\Fields\Macros\HeadingSettings;
 
 use App\Fields\Macros\TextBlockLink;
 
@@ -17,31 +18,41 @@ class Usps extends Partial
         ]);
 
         $usps
-            ->addFields($this->get(TextBlockLink::class))
-                ->removeField('link')
-
-            ->addRepeater('usps', [
-                'label' => 'Usps',
-                'layout' => 'block',
-                'button_label' => 'Voeg usp toe',
+            ->addTab('content', [
+                'placement' => 'top',
+                'label' => 'Inhoud',
             ])
-                ->addImage('icon', [
-                    'label' => 'Icoon',
-                    'preview_size' => 'thumbnail',
-                ])
-                    ->setWidth('15')
+                ->addFields($this->get(TextBlockLink::class))
+                    ->removeField('link')
 
-                ->addText('title', [
-                    'label' => 'Titel',
+                ->addRepeater('usps', [
+                    'label' => 'Usps',
+                    'layout' => 'block',
+                    'button_label' => 'Voeg usp toe',
                 ])
-                    ->setWidth('35')
+                    ->addImage('icon', [
+                        'label' => 'Icoon',
+                        'preview_size' => 'thumbnail',
+                    ])
+                        ->setWidth('15')
 
-                ->addTextarea('text', [
-                    'label' => 'Tekst',
-                ])
-                    ->setWidth('50')
+                    ->addText('title', [
+                        'label' => 'Titel',
+                    ])
+                        ->setWidth('35')
 
-            ->endRepeater();
+                    ->addTextarea('text', [
+                        'label' => 'Tekst',
+                    ])
+                        ->setWidth('50')
+
+                ->endRepeater()
+
+            ->addTab('settings', [
+                'label' => 'Instellingen',
+                'placement' => 'top'
+            ])
+                ->addFields($this->get(HeadingSettings::class));
 
         return $usps;
     }

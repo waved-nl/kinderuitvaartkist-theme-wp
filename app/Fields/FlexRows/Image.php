@@ -32,6 +32,7 @@ class Image extends Partial
                     'label' => 'Volledige breedte',
                     'default_value' => false,
                 ])
+
                 ->addFields($this->get(BgColors::class));
 
 

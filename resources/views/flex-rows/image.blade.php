@@ -11,12 +11,18 @@
   @if ($content->full_width)
     @if (!empty($content->image))
       <div class="o-wrapper-image-full">
-        @include('macros.image', ['image' => $content->image, 'size' => ''])
+        @include('macros.image', [
+          'image' => $content->image,
+          'size' => ''
+        ])
       </div>
     @endif
   @else
     <div class="container-fluid-xl">
-      @include('macros.image', ['image' => $content->image, 'class' => 'o-image'])
+      @include('macros.image', [
+        'image' => $content->image,
+        'class' => 'o-image'
+      ])
     </div>
   @endif
 </section>

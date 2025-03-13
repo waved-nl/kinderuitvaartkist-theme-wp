@@ -5,7 +5,10 @@
 <section class="o-section o-section--usps">
   <div class="container-fluid-xl">
 
-    @include('macros.text-block', ['content' => $content, 'heading_type' => 'h1', 'class' => 'u-text-large'])
+    @include('macros.text-block', [
+      'content' => $content,
+      'class' => 'u-text-large'
+    ])
 
     <div class="c-usps">
       <div class="row">
@@ -15,7 +18,11 @@
           @endphp
           <div class="col-md-6">
             <div class="c-usp">
-              @include('macros.image', ['image' => $usp->icon, 'class' => 'c-usp__icon', 'size' => 'medium'])
+              @include('macros.image', [
+                'image' => $usp->icon,
+                'class' => 'c-usp__icon',
+                'size' => 'medium'
+              ])
               <div class="c-usp__content">
                 <h3 class="c-usp__title">{!! $usp->title !!}</h3>
                 <p class="c-usp__text">

@@ -13,13 +13,21 @@
         @php
             $content->content_col_1 = (object) $content->content_col_1;
         @endphp
-        @include('macros.text-block', ['content' => $content->content_col_1, 'heading_type' => 'h2'])
+        @include('macros.text-block', [
+          'content' => $content->content_col_1,
+          'heading_type' => 'h2',
+          'heading_class' => 'h2',
+        ])
       </div>
       <div class="col-md-6">
         @php
           $content->content_col_2 = (object) $content->content_col_2;
         @endphp
-        @include('macros.text-block', ['content' => $content->content_col_2, 'heading_type' => 'h2'])
+        @include('macros.text-block', [
+          'content' => $content->content_col_2,
+          'heading_type' => 'h2',
+          'heading_class' => 'h2',
+        ])
       </div>
     </div>
   </div>

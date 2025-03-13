@@ -2,6 +2,7 @@
 
 namespace App\Fields\FlexRows;
 
+use App\Fields\Macros\HeadingSettings;
 use Log1x\AcfComposer\Partial;
 use StoutLogic\AcfBuilder\FieldsBuilder;
 
@@ -18,10 +19,21 @@ class ContentImageAlt extends Partial
         ]);
 
         $content_image_alt
-            ->addFields($this->get(Image::class))
+            ->addTab('content', [
+                'label' => 'Inhoud',
+                'placement' => 'top'
+            ])
+                ->addFields($this->get(Image::class))
 
-            ->addFields($this->get(TextBlockLink::class))
-                ->modifyField('content', [ 'toolbar' => 'simple_no_format',]);
+                ->addFields($this->get(TextBlockLink::class))
+                    ->modifyField('content', [ 'toolbar' => 'simple_no_format',])
+
+            ->addTab('settings', [
+                'label' => 'Instellingen',
+                'placement' => 'top'
+            ])
+                ->addFields($this->get(HeadingSettings::class));
+
 
         return $content_image_alt;
     }

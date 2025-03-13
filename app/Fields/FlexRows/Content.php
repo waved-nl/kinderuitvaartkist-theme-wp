@@ -6,6 +6,8 @@ use Log1x\AcfComposer\Partial;
 use StoutLogic\AcfBuilder\FieldsBuilder;
 use App\Fields\Macros\TextBlockLink;
 use App\Fields\Macros\BgColors;
+use App\Fields\Macros\HeadingSettings;
+
 class Content extends Partial
 {
     public function fields()
@@ -26,6 +28,8 @@ class Content extends Partial
                 'label' => 'Instellingen',
                 'placement' => 'top'
             ])
+                ->addFields($this->get(HeadingSettings::class))
+
                 ->addFields($this->get(BgColors::class));
 
         return $content;

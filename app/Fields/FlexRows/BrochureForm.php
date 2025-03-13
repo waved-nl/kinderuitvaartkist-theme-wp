@@ -6,6 +6,7 @@ use Log1x\AcfComposer\Partial;
 use StoutLogic\AcfBuilder\FieldsBuilder;
 use App\Fields\Macros\Image;
 use App\Fields\Macros\TextBlockLink;
+use App\Fields\Macros\HeadingSettings;
 
 class BrochureForm extends Partial
 {
@@ -17,16 +18,26 @@ class BrochureForm extends Partial
         ]);
 
         $brochure_form
-            ->addFields($this->get(TextBlockLink::class))
-                ->modifyField('content', [ 'toolbar' => 'simple_no_format',])
-                ->removeField('link')
+            ->addTab('content', [
+                'placement' => 'top',
+                'label' => 'Inhoud',
+            ])
+                ->addFields($this->get(TextBlockLink::class))
+                    ->modifyField('content', [ 'toolbar' => 'simple_no_format',])
+                    ->removeField('link')
 
-            ->addFields($this->get(Image::class))
+                ->addFields($this->get(Image::class))
 
-            ->addText('form_shortcode', [
-                'label' => 'Contact form 7 code',
-                'instructions' => 'voorbeeld: <i>[contact-form-7 id="id" title="title"]</i>'
-            ]);
+                ->addText('form_shortcode', [
+                    'label' => 'Contact form 7 code',
+                    'instructions' => 'voorbeeld: <i>[contact-form-7 id="id" title="title"]</i>'
+                ])
+
+            ->addTab('settings', [
+                'placement' => 'top',
+                'label' => 'Instellingen',
+            ])
+                ->addFields($this->get(HeadingSettings::class));
 
         return $brochure_form;
     }

@@ -5,7 +5,10 @@
 
 <section class="o-section o-section--accordion bg-light-gold">
   <div class="container-fluid-lg">
-    <h1 class="h3">{{ $content->title }}</h1>
+
+    @if ($content->title)
+      <{{ $content->heading_type ?? 'h2'}} class="h3">{!! App\boldWordFormat($content->title) !!}</{{ $content->heading_type ?? 'h2'}}>
+    @endif
 
     <div class="accordion" id="accordion-{{ $unique_id }}">
 

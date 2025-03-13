@@ -3,7 +3,7 @@
     <div class="row gx-5">
       <div class="col-md-6">
         @if ($intro->title)
-          <h1>{!! App\boldWordFormat($intro->title) !!}</h1>
+          <h2 class="h1">{!! App\boldWordFormat($intro->title) !!}</h2>
         @endif
       </div>
       <div class="col-md-6">

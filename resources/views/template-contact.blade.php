@@ -19,14 +19,14 @@ Template Name: Contact pagina
         <div class="row">
           <div class="col-md-6">
             <div class="c-form">
-              <h1 class="h2">{!! App\boldWordFormat($fields->contact_form_title) !!}</h1>
+              <h2 class="h2">{!! App\boldWordFormat($fields->contact_form_title) !!}</h2>
               {!! do_shortcode($fields->contact_form_shortcode) !!}
             </div>
           </div>
           <div class="col-md-6">
             <div class="c-contact-blocks">
               <div class="c-contact-block u-text-large">
-                <h2><strong>Van Wijk</strong> Uitvaartkisten</h2>
+                <h2 class="h2"><strong>Van Wijk</strong> Uitvaartkisten</h2>
                 <ul class="c-contact-block__links">
                   <li class="c-contact-block__links__item">
                     @if (isset($fields->faq_link))

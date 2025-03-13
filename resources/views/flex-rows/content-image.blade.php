@@ -12,13 +12,19 @@
       <div class="row d-flex {{ $content->image_position == 'left' ? 'flex-sm-row-reverse' : '' }}">
         <div class="col-md-6 align-self-center c-content-image__col-content">
           <div class="c-content-image__col-content__inner">
-            @include('macros.text-block', ['content' => $content, 'class' => $content->image_position == 'left' ? 'ms-md-auto' : '', 'heading_type' => 'h1'])
+            @include('macros.text-block', [
+              'content' => $content,
+              'class' => $content->image_position == 'left' ? 'ms-md-auto' : '',
+            ])
           </div>
         </div>
         <div class="col-md-6 c-content-image__col-image">
           <div class="c-content-image__col-image__inner">
             @if (!empty($content->image))
-              @include('macros.image', ['image' => $content->image, 'class' => 'o-image'])
+              @include('macros.image', [
+                'image' => $content->image,
+                'class' => 'o-image'
+              ])
             @endif
           </div>
         </div>

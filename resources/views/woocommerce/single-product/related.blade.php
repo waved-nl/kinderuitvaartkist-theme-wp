@@ -28,10 +28,7 @@
 
       <div class="row">
         <div class="col-md-3">
-          <h1>
-            Andere keken <br />
-            <strong>ook naar</strong>
-          </h1>
+          <h2 class="h1">Andere keken <br /><strong>ook naar</strong></h2>
         </div>
         <div class="col-md-9">
           <div class="c-product-related-slider swiper-container swiper" data-product-related-slider>

@@ -6,6 +6,7 @@ use Log1x\AcfComposer\Partial;
 use StoutLogic\AcfBuilder\FieldsBuilder;
 use App\Fields\Macros\TextBlockLink;
 use App\Fields\Macros\Image;
+use App\Fields\Macros\HeadingSettings;
 
 class CallToAction extends Partial
 {
@@ -18,11 +19,21 @@ class CallToAction extends Partial
 
 
         $call_to_action
-            ->addFields($this->get(TextBlockLink::class))
-                ->modifyField('content', [ 'toolbar' => 'simple_no_format',])
+            ->addTab('content', [
+                'placement' => 'top',
+                'label' => 'Inhoud',
+            ])
+                ->addFields($this->get(TextBlockLink::class))
+                    ->modifyField('content', [ 'toolbar' => 'simple_no_format',])
 
-            ->addFields($this->get(Image::class))
-                ->modifyField('image', ['label'=>'Achtergrond afbeelding']);
+                ->addFields($this->get(Image::class))
+                    ->modifyField('image', ['label'=>'Achtergrond afbeelding'])
+
+            ->addTab('settings', [
+                'placement' => 'top',
+                'label' => 'Instellingen',
+            ])
+                ->addFields($this->get(HeadingSettings::class));
 
         return $call_to_action;
     }

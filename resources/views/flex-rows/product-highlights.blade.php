@@ -8,7 +8,9 @@
       <div class="d-flex flex-column">
         <div class="row order-md-2">
           <div class="col-md-3">
-            <h1>{!! App\boldWordFormat($content->title) !!}</h1>
+            @if ($content->title)
+              <{{ $content->heading_type ?? 'h2'}} class="h1">{!! App\boldWordFormat($content->title) !!}</{{ $content->heading_type ?? 'h2'}}>
+            @endif
           </div>
           <div class="col-md-9">
             <div class="c-product-related-slider swiper-container swiper" data-product-product-highlights-slider>

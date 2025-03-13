@@ -8,6 +8,8 @@
 
 <section class="o-section o-section--content {{ $bg_color }}">
   <div class="container-fluid-xl">
-    @include('macros.text-block', ['content' => $content, 'heading_type' => 'h1'])
+    @include('macros.text-block', [
+      'content' => $content,
+    ])
   </div>
 </section>

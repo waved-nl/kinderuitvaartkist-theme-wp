@@ -2,6 +2,7 @@
 
 namespace App\Fields\FlexRows;
 
+use App\Fields\Macros\HeadingSettings;
 use Log1x\AcfComposer\Partial;
 use StoutLogic\AcfBuilder\FieldsBuilder;
 
@@ -17,49 +18,59 @@ class Linings extends Partial
         ]);
 
         $linings
-            ->addFields($this->get(TextBlockLink::class))
-                ->removeField('link')
-
-            ->addRepeater('group', [
-                'label' => 'Groep',
-                'layout' => 'block',
-                'button_label' => 'Voeg groep toe',
+            ->addTab('content', [
+                'label' => 'Inhoud',
+                'placement' => 'top'
             ])
+                ->addFields($this->get(TextBlockLink::class))
+                    ->removeField('link')
 
-                ->addTextarea('title', [
-                    'label' => 'Titel',
-                    'rows' => 2,
-                    'new_lines' => 'br',
-                    'instructions' => 'Om een tekst <strong>vet</strong> te maken, voeg je voor en achter de tekst een sterretje toe: *tekst*',
+                ->addRepeater('group', [
+                    'label' => 'Groep',
+                    'layout' => 'block',
+                    'button_label' => 'Voeg groep toe',
                 ])
 
-                ->addRepeater('items', [
-                    'label' => 'Items',
-                    'layout' => 'table',
-                    'button_label' => 'Voeg item toe',
-                ])
-                    ->addImage('image', [
-                        'label' => 'Afbeelding',
-                        'preview_size' => 'thumbnail',
-                    ])
-                        ->setWidth('20')
-    
-                    ->addText('subtitle', [
+                    ->addTextarea('title', [
                         'label' => 'Titel',
+                        'rows' => 2,
+                        'new_lines' => 'br',
+                        'instructions' => 'Om een tekst <strong>vet</strong> te maken, voeg je voor en achter de tekst een sterretje toe: *tekst*',
                     ])
-                        ->setWidth('20')
 
-                    ->addTextarea('subtext', [
-                        'label' => 'Tekst',
-                        'rows' => 3,
-                        'new_lines' => '',
+                    ->addRepeater('items', [
+                        'label' => 'Items',
+                        'layout' => 'table',
+                        'button_label' => 'Voeg item toe',
                     ])
-                        ->setWidth('60')
+                        ->addImage('image', [
+                            'label' => 'Afbeelding',
+                            'preview_size' => 'thumbnail',
+                        ])
+                            ->setWidth('20')
 
-    
+                        ->addText('subtitle', [
+                            'label' => 'Titel',
+                        ])
+                            ->setWidth('20')
+
+                        ->addTextarea('subtext', [
+                            'label' => 'Tekst',
+                            'rows' => 3,
+                            'new_lines' => '',
+                        ])
+                            ->setWidth('60')
+
+
+                    ->endRepeater()
+
                 ->endRepeater()
 
-            ->endRepeater();
+            ->addTab('settings', [
+                'label' => 'Instellingen',
+                'placement' => 'top'
+            ])
+                ->addFields($this->get(HeadingSettings::class));
 
         return $linings;
     }

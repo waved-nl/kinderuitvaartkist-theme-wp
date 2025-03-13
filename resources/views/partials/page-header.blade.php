@@ -8,11 +8,13 @@
     <div class="container-fluid-xl">
       <div class="row gy-4 gx-5">
         <div class="col-md-6">
-          @if (isset($page_header->title) && !empty($page_header->title))
-            <h1 class="c-page-header__title">{!! App\boldWordFormat($page_header->title) !!}</h1>
-          @else
-            <h1 class="c-page-header__title">{!! App\boldWordFormat($page_title) !!}</h1>
-          @endif
+          @php
+              $title = $page_title;
+              if(isset($page_header->title) && !empty($page_header->title)) {
+                $title = $page_header->title;
+              }
+          @endphp
+          <{{ $page_header->heading_type ?? 'h1'}} class="c-page-header__title h1">{!! App\boldWordFormat($title) !!}</{{ $page_header->heading_type ?? 'h1'}}>
         </div>
         @if ((isset($page_header->content) && !empty($page_header->content)))
           <div class="col-md-6">
