@@ -1,11 +1,6 @@
 .woocommerce-pagination {
   margin-top: 50px;
 
-  @include media-breakpoint-up(md) {
-    width: 75%;
-    margin-left: auto;
-  }
-
   ul.page-numbers {
     display: flex;
     flex-wrap: wrap;

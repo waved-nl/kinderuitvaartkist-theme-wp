@@ -78,6 +78,10 @@
 
         </div>
 
+        @php
+          do_action( 'woocommerce_after_shop_loop' );
+        @endphp
+
         @if($extra_content)
           <div class="mt-5">
             {!! $extra_content !!}

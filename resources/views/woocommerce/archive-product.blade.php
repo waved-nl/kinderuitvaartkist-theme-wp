@@ -51,10 +51,6 @@
           @include('woocommerce.partials.archive-product-grid')
         @endif
 
-        @php
-          do_action( 'woocommerce_after_shop_loop' );
-        @endphp
-
       </div>
     </section>
   @else
