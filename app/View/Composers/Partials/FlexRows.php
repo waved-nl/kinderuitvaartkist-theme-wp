@@ -16,7 +16,14 @@ class FlexRows extends Composer
     public function data()
     {
         $post_id = get_the_ID();
-        $flex_rows = get_field('flex_rows', $post_id);
+
+        if (is_home()) {
+            $post_archive_flex_rows_group = get_field('post_archive_flex_rows_group', 'option');
+            $flex_rows = $post_archive_flex_rows_group['flex_rows'];
+        } else {
+            $flex_rows = get_field('flex_rows', $post_id);
+        }
+
 
         if (!$flex_rows) {
             return [];

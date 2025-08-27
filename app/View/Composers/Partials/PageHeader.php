@@ -16,6 +16,11 @@ class PageHeader extends Composer
 
     public function page_header()
     {
+
+        if(is_home()) {
+            return (object) get_field('post_archive_page_header_group', 'option');
+        }
+
         return (object) get_field('page_header_group');
     }
 }

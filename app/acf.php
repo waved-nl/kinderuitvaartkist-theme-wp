@@ -12,6 +12,15 @@ if (function_exists('acf_add_options_page')) {
         'capability'    => 'edit_posts',
         'redirect'        => false,
     ));
+
+    acf_add_options_page(array(
+        'page_title'     => 'Archief instellingen',
+        'menu_title'     => 'Archief instellingen',
+        'menu_slug'      => 'post-archive-settings',
+        'capability'     => 'edit_posts',
+        'redirect'       => false,
+        'parent_slug'    => 'edit.php',
+    ));
 }
 
 /**

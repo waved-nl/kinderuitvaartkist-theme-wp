@@ -31,7 +31,7 @@ class Page extends Field
         $builder
         ->setLocation('page_template', '==', 'default')
             ->and('page_type', '!=', 'front_page')
-            ->and('page_template', '!=', 'template-contact.blade.php');
+            ->and('page_template', '!=', 'template-contact.blade.php')
 
         return $builder->build();
     }

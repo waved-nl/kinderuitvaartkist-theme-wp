@@ -2,11 +2,9 @@
 
 namespace App\Fields\Page;
 
-use App\Fields\Macros\HeadingSettings;
 use Log1x\AcfComposer\Partial;
 use StoutLogic\AcfBuilder\FieldsBuilder;
 use App\Fields\Macros\Image;
-use App\Fields\Macros\TextBlockLink;
 
 class PageHeader extends Partial
 {
