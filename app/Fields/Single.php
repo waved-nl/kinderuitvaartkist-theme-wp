@@ -7,31 +7,24 @@ use StoutLogic\AcfBuilder\FieldsBuilder;
 use App\Fields\Partials\FlexRows;
 use App\Fields\Page\PageHeader;
 
-class Page extends Field
+class Single extends Field
 {
     public function fields()
     {
-        $builder = new FieldsBuilder('page', [
-            'title' => 'Pagina',
+        $builder = new FieldsBuilder('single', [
+            'title' => 'Blog bericht',
             'position' => 'acf_after_title',
             'hide_on_screen' => ['the_content', 'categories', 'tags', 'featured_image', 'author'],
         ]);
 
         $builder
-            ->addTab('page_header', [
-                'label' => 'Header',
-            ])
-                ->addFields($this->get(PageHeader::class))
-
             ->addTab('content', [
                 'label' => 'Flexibele rijen',
             ])
                 ->addFields($this->get(FlexRows::class));
 
         $builder
-        ->setLocation('page_template', '==', 'default')
-            ->and('page_type', '!=', 'front_page')
-            ->and('page_template', '!=', 'template-contact.blade.php');
+            ->setLocation('post_type', '==', 'post');
 
         return $builder->build();
     }

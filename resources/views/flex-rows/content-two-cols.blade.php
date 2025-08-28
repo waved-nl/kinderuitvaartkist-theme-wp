@@ -6,8 +6,8 @@
     }
 @endphp
 
-<section class="o-section o-section--content-cols {{ $bg_color }}">
-  <div class="container-fluid-xl">
+<section class="o-section o-section--content-cols {{ is_singular('post') ? '' : $bg_color }}">
+  <div class="{{ is_singular('post') ? 'container-fluid-lg' : 'container-fluid-xl' }}">
     <div class="row">
       <div class="col-md-6">
         @php

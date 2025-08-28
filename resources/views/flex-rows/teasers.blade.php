@@ -2,8 +2,8 @@
     $content = (object) $row->row_content;
 @endphp
 
-<section class="o-section o-section--teasers bg-light-gold">
-  <div class="container-fluid">
+<section class="o-section o-section--teasers {{ is_singular('post') ? '' : 'bg-light-gold' }}">
+  <div class="{{ is_singular('post') ? 'container-fluid-lg' : 'container-fluid' }}">
     <div class="c-teaser-blocks">
       <div class="row gy-5 gx-lg-5">
         @foreach ($content->teasers as $teaser)

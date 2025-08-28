@@ -2,8 +2,8 @@
     $content = (object) $row->row_content;
 @endphp
 
-<section class="o-section o-section--referral bg-light-green">
-  <div class="container-fluid">
+<section class="o-section o-section--referral {{ is_singular('post') ? '' : 'bg-light-green' }}">
+  <div class="{{ is_singular('post') ? 'container-fluid-lg' : 'container-fluid' }}">
     <div class="row gy-4 gx-5">
       <div class="col-md-4 col-lg-3">
         @if (!empty($content->image))

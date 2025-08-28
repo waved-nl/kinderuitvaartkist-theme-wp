@@ -7,7 +7,7 @@
     }
 @endphp
 
-<section class="o-section o-section--image {{ $bg_color }}">
+<section class="o-section o-section--image {{ is_singular('post') ? '' : $bg_color }}">
   @if ($content->full_width)
     @if (!empty($content->image))
       <div class="o-wrapper-image-full">
@@ -18,7 +18,7 @@
       </div>
     @endif
   @else
-    <div class="container-fluid-xl">
+    <div class="{{ is_singular('post') ? 'container-fluid-lg' : 'container-fluid-xl' }}">
       @include('macros.image', [
         'image' => $content->image,
         'class' => 'o-image'

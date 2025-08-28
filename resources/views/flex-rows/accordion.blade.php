@@ -3,7 +3,7 @@
     $unique_id = wp_unique_id();
 @endphp
 
-<section class="o-section o-section--accordion bg-light-gold">
+<section class="o-section o-section--accordion {{ is_singular('post') ? '' : 'bg-light-gold' }}">
   <div class="container-fluid-lg">
 
     @if ($content->title)

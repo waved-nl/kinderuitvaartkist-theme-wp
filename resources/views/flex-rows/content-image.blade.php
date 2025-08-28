@@ -6,8 +6,8 @@
     }
 @endphp
 
-<section class="o-section o-section--content-image {{ $bg_color }}">
-  <div class="container-fluid-xl">
+<section class="o-section o-section--content-image {{ is_singular('post') ? '' : $bg_color }}">
+  <div class="{{ is_singular('post') ? 'container-fluid-lg' : 'container-fluid-xl' }}">
     <div class="c-content-image c-content-image--{{ $content->image_position }}">
       <div class="row d-flex {{ $content->image_position == 'left' ? 'flex-sm-row-reverse' : '' }}">
         <div class="col-md-6 align-self-center c-content-image__col-content">

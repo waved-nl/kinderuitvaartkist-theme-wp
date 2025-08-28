@@ -6,8 +6,8 @@
     }
 @endphp
 
-<section class="o-section o-section--content {{ $bg_color }}">
-  <div class="container-fluid-xl">
+<section class="o-section o-section--content {{ is_singular('post') ? '' : $bg_color }}">
+  <div class="{{ is_singular('post') ? 'container-fluid-lg' : 'container-fluid-xl' }}">
     @include('macros.text-block', [
       'content' => $content,
     ])

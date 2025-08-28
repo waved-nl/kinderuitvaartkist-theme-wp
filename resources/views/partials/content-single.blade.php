@@ -33,13 +33,7 @@
     </div>
   </header>
 
-  <section class="o-section o-section--post-content">
-    <div class="container-fluid-xl">
-      <div class="o-content">
-        {!! the_content() !!}
-      </div>
-    </div>
-  </section>
+  @include('partials.flex-rows')
 
 </article>
 

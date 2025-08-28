@@ -2,8 +2,8 @@
     $content = (object) $row->row_content;
 @endphp
 
-<section class="o-section o-section--content-image-alt bg-light-gold">
-  <div class="container-fluid-xl">
+<section class="o-section o-section--content-image-alt {{ is_singular('post') ? '' : 'bg-light-gold' }}">
+  <div class="{{ is_singular('post') ? 'container-fluid-lg' : 'container-fluid-xl' }}">
     <div class="c-content-image c-content-image--alt">
       <div class="row d-flex flex-sm-row-reverse">
         <div class="col-md-7 col-lg-6 c-content-image__col-content">

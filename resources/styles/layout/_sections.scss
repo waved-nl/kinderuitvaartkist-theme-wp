@@ -149,3 +149,17 @@
   padding-top: 4.6875rem;
   padding-bottom: 4.6875rem;
 }
+
+.single-post .c-single-post {
+  .o-section {
+    margin-top: 3.125rem !important;
+    margin-bottom: 3.125rem !important;
+    padding: 0 !important;
+
+    &.o-section.o-section--cta {
+      margin: 0 !important;
+      padding-top: 4.6875rem !important;
+      padding-bottom: 4.6875rem !important;
+    }
+  }
+}

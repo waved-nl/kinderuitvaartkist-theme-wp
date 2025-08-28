@@ -3,7 +3,7 @@
 @endphp
 
 <section class="o-section o-section--image-cards">
-  <div class="container-fluid-xl">
+  <div class="{{ is_singular('post') ? 'container-fluid-lg' : 'container-fluid-xl' }}">
 
     @include('macros.text-block', [
       'content' => $content,

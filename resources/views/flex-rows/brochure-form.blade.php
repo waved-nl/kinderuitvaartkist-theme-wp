@@ -2,8 +2,8 @@
     $content = (object) $row->row_content;
 @endphp
 
-<section class="o-section o-section--brochure-form bg-light-gold">
-  <div class="container-fluid-xl">
+<section class="o-section o-section--brochure-form {{ is_singular('post') ? '' : 'bg-light-gold' }}">
+  <div class="{{ is_singular('post') ? 'container-fluid-lg' : 'container-fluid-xl' }}">
     <div class="row">
       <div class="col-md-6">
         @include('macros.text-block', [

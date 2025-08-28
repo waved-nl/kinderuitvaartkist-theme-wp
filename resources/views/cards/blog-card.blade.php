@@ -2,7 +2,16 @@
 
   @php
     $title = get_the_title($post->ID);
-    $content = get_the_content($post->ID);
+    $flex_rows = get_field('flex_rows', $post->ID);
+    $content = '';
+    if ($flex_rows && is_array($flex_rows)) {
+        foreach ($flex_rows as $row) {
+            if ($row['acf_fc_layout'] === 'content' && !empty($row['content'])) {
+                $content = $row['content'];
+                break;
+            }
+        }
+    }
     $excerpt = wp_trim_words($content, 10);
     $categories = get_the_category($post->ID);
     $permalink = get_the_permalink($post->ID);
